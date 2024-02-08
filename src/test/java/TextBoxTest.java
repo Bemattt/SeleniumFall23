@@ -28,6 +28,15 @@ public class TextBoxTest {
                 .fillUpCurrentAddress("Sovet 23")
                 .fillUpPermanentAddress("Mira123")
                 .clickSubmitBtn();
+
+        String actualFullNameText =driver.findElement(By.cssSelector("#name")).getText();
+        assertEquals(actualFullNameText,"Name:John Doe");
+        String actualEmailText =driver.findElement(By.cssSelector("#email")).getText();
+        assertEquals(actualEmailText,"Email:John@gmail.com");
+        String actualCurrentAddressText =driver.findElement(By.xpath("//p[@id='currentAddress']")).getText();
+        assertEquals(actualCurrentAddressText,"Current Address :Sovet 23");
+        String actualPermanentAddressText =driver.findElement(By.xpath("//p[@id='permanentAddress']")).getText();
+        assertEquals(actualPermanentAddressText,"Permananet Address :Mira123");
     }
 
     @Test
