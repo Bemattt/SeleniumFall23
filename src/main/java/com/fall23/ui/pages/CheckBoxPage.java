@@ -25,6 +25,9 @@ public class CheckBoxPage {
     @FindBy(xpath = "(//button[@class='rct-collapse rct-collapse-btn'])[4]")
     public WebElement downloadsBtn;
 
+    @FindBy(xpath = "//*[@id=\"tree-node\"]/ol/li/span/label/span[1]/svg")
+    public WebElement homeBtnClick;
+
 
 
     WebElementHelper webElementHelper = new WebElementHelper();
@@ -45,6 +48,11 @@ public class CheckBoxPage {
     }
     public CheckBoxPage clickBtnDownloads(){
         webElementHelper.click(downloadsBtn);
+        return this;
+    }
+
+    public CheckBoxPage clickHome(){
+        webElementHelper.click(homeBtnClick);
         return this;
     }
 }

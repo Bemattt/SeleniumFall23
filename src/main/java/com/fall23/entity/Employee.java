@@ -25,20 +25,25 @@ public class Employee {
     private int salary;
     private String department;
 
-    public ArrayList<Employee> getEmployeesFromTable(WebDriver driver){
+    public static ArrayList<Employee> getEmployeesFromTable(WebDriver driver){
         // Find the table rows
         List<WebElement> rows = driver.findElements(By.cssSelector(".ReactTable .rt-tr-group"));
 
-        ArrayList<Employee> employees = new ArrayList<>();
+        ArrayList<Employee> employees = new ArrayList<>(); // пустой лист
 
         for (WebElement row : rows){
             List<WebElement> cells = row.findElements(By.cssSelector(".rt-td"));
             String firstName =  cells.get(0).getText();
             String lastName = cells.get(1).getText();
-            String ageText = cells.get(2).getText();
+            String ageText = cells.get(2).getText().replaceAll("[^0-9]", "");
             String email = cells.get(3).getText();
-            String salaryText = cells.get(4).getText();
+            String salaryText = cells.get(4).getText().replaceAll("[^0-9]", "");
             String department = cells.get(5).getText();
+
+            if (firstName.isEmpty() || lastName.isEmpty() || ageText.isEmpty() ||email.isEmpty()
+                    || salaryText.isEmpty() || department.isEmpty()) {
+                continue;
+            }
 
             int age = Integer.parseInt(ageText.trim());
             int salary = Integer.parseInt(salaryText.trim());

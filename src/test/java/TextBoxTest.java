@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
 import static org.testng.Assert.assertEquals;
 
 public class TextBoxTest {
@@ -40,18 +41,16 @@ public class TextBoxTest {
     }
 
     @Test
-    void test213() throws InterruptedException {
+    void fillUpTheFormNegativeTest(){
+        driver.get("https://demoqa.com/text-box");
+        textBoxPage.fillUpFullName("John Doe")
+                .fillUpEmail("john@")
+                .fillUpCurrentAddress("Sovet 23")
+                .fillUpPermanentAddress("Mira123")
+                .clickSubmitBtn();
 
-
-        WebDriver driver = Driver.getDriver();
-        driver.get("https://demoqa.com/browser-windows");
-        WebElement newTab = driver.findElement(By.id("tabButton"));
-        for (int i = 0; i < 6; i++) {
-            newTab.click();
-            Thread.sleep(1500);
-        }
-        WindowHelper windowHelper = new WindowHelper();
-        windowHelper.switchToParentWithChildClose();
+//        String actualEmail = driver.findElement(By.xpath("//*[@id=\"userEmail\"]")).getText();
+//        assertEquals(actualEmail, " ");
 
 
     }

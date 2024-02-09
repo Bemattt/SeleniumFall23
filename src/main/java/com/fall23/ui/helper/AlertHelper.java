@@ -9,32 +9,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class alertHelper {
-
-    private WebDriver driver;
+public class AlertHelper {
 
     public Alert getAlert(){
-        return driver.switchTo().alert();
+
+        return Driver.getDriver().switchTo().alert();
     }
 
     public void acceptAlert(){
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(7))
                 .until(ExpectedConditions.alertIsPresent());
         if (!isAlertPresent()){
-            return;
+            return; // остановись (останавливай программу)
         }
         getAlert().accept();
+
     }
 
-    public void dismissAlert(){
+    public AlertHelper dismissAlert(){
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(7))
                 .until(ExpectedConditions.alertIsPresent());
         getAlert().dismiss();
+        return this;
     }
 
-    public void sendKeysAlert(String txt){
+    public AlertHelper sendKeysAlert(String txt){
         getAlert().sendKeys(txt);
-        acceptAlert();
+        acceptAlert(); //dismiss();
+        return this;
     }
 
     public boolean isAlertPresent(){

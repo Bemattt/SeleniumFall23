@@ -17,7 +17,7 @@ public class WindowHelper {
         return Driver.getDriver().getWindowHandles();
     }
 
-    public static void switchToWindow(int index) {
+    public void switchToWindow(int index) {
         Set<String> handles = getWindowHandles();
         List<String> windowsId = new LinkedList<>(handles);
 
@@ -35,7 +35,7 @@ public class WindowHelper {
 //            newTab.click();
 //            Thread.sleep(4000);
 //        }
-//        switchToWindow(3);
+//        switchToWindow(1);
 //        Thread.sleep(6000);
 //        Driver.getDriver().quit();
 //    }
