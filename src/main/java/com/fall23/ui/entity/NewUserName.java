@@ -11,7 +11,6 @@ import lombok.*;
 
 public class NewUserName {
     public static String firstName;
-
     private  String lastName;
     private  String userName;
     private  String password;

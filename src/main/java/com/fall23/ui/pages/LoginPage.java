@@ -1,5 +1,6 @@
 package com.fall23.ui.pages;
 
+import com.fall23.demoqa.WebDriverManager;
 import com.fall23.ui.drivers.Driver;
 import com.fall23.ui.entity.Employee;
 import com.fall23.ui.entity.NewUserName;
@@ -57,16 +58,30 @@ public class LoginPage {
         WebElement clickBackToLogin = driver.findElement(By.id("gotoStore"));
         clickBackToLogin.click();
         webElementHelper.click(driver.findElement(By.id("see-book-Git Pocket Guide")))
-                .scrollToElement(driver.findElement(By.id("addNewRecordButton")))
-                .click(driver.findElement(By.id("addNewRecordButton")));
+                .scrollToElement(driver.findElement(By.xpath("//button[text()='Add To Your Collection']")))
+                .click(driver.findElement(By.xpath("//button[text()='Add To Your Collection']")));
+        AlertHelper alertHelper = new AlertHelper();
+        alertHelper.isAlertPresent();
+        alertHelper.acceptAlert();
 
-
-
+        webElementHelper.click(driver.findElement(By.id("addNewRecordButton")))
+                .scrollToElement(driver.findElement(By.id("see-book-Speaking JavaScript")))
+                .click(driver.findElement(By.id("see-book-Speaking JavaScript")))
+                .scrollToElement(driver.findElement(By.xpath("//button[text()='Add To Your Collection']")))
+                .click(driver.findElement(By.xpath("//button[text()='Add To Your Collection']")));
+        alertHelper.isAlertPresent();
+        alertHelper.acceptAlert();
+        webElementHelper.click(driver.findElement(By.id("addNewRecordButton")));
         return this;
     }
 
-
-
+    public LoginPage goToProfile() {
+        WebDriver driver = Driver.getDriver();
+        driver.get("https://demoqa.com/profile");
+//        WebElementHelper webElementHelper = new WebElementHelper();
+//        webElementHelper.click(driver.findElement(By.xpath("//li[@class=\"btn btn-light active\"]")));
+        return this;
+    }
 }
 
 
