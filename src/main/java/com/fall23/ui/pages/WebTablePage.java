@@ -1,7 +1,7 @@
 package com.fall23.ui.pages;
 
-import com.fall23.entity.Employee;
 import com.fall23.ui.drivers.Driver;
+import com.fall23.ui.entity.Employee;
 import com.fall23.ui.helper.WebElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
