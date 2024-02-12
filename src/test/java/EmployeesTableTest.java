@@ -3,6 +3,7 @@ import com.fall23.ui.drivers.Driver;
 import com.fall23.ui.entity.Employee;
 import com.fall23.ui.pages.WebTablePage;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -35,6 +36,5 @@ public class EmployeesTableTest {
 
         System.out.println(totalSalaryAmount);
         System.out.println(total + "total");
-
     }
 }

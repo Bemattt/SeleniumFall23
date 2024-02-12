@@ -3,6 +3,7 @@ package com.fall23.ui.helper;
 import com.fall23.ui.drivers.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -59,30 +60,12 @@ public class WebElementHelper {
         actions.contextClick().perform();
         return this;
     }
-    public WebElementHelper selectByText(WebElement element,String txt){
-        select = new Select(element);
-        select.selectByVisibleText(txt);
+
+    public WebElementHelper sendKeysWithEnter(WebElement element,String txt){
+        waitForElementToBeDisplayed(element);
+        element.sendKeys(txt);
+        element.sendKeys(Keys.ENTER);
         return this;
     }
 
-    public WebElementHelper selectByIndex(WebElement element, int index){
-        select = new Select(element);
-        select.selectByIndex(index);
-        return this;
-    }
-    public WebElementHelper selectByValue(WebElement element, String value){
-        select = new Select(element);
-        select.selectByValue(value);
-        return this;
-    }
-    public List<String> getAllDropDownMenu(WebElement element){
-        select = new Select(element);
-        List<WebElement>elementList = select.getOptions();
-        List<String> valueList = new LinkedList<>();
-
-        for(WebElement element1 : elementList){
-            valueList.add(element1.getText());
-        }
-        return valueList;
-    }
 }

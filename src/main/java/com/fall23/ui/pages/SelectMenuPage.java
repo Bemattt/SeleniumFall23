@@ -12,5 +12,8 @@ public class SelectMenuPage {
     }
         @FindBy(id = "oldSelectMenu")
         public WebElement oldStyleSelectMenu;
+        @FindBy(id = "react-select-3-input")
+        public WebElement selectValueInput;
+
     }
 
