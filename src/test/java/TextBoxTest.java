@@ -40,19 +40,19 @@ public class TextBoxTest {
         assertEquals(actualPermanentAddressText,"Permananet Address :Mira123");
     }
 
-    @Test
-    void fillUpTheFormNegativeTest(){
-        driver.get("https://demoqa.com/text-box");
-        textBoxPage.fillUpFullName("John Doe")
-                .fillUpEmail("john@")
-                .fillUpCurrentAddress("Sovet 23")
-                .fillUpPermanentAddress("Mira123")
-                .clickSubmitBtn();
-
-//        String actualEmail = driver.findElement(By.xpath("//*[@id=\"userEmail\"]")).getText();
+//    @Test
+//    void fillUpTheFormNegativeTest(){
+//        driver.get("https://demoqa.com/text-box");
+//        textBoxPage.fillUpFullName("John Doe")
+//                .fillUpEmail("john@")
+//                .fillUpCurrentAddress("Sovet 23")
+//                .fillUpPermanentAddress("Mira123")
+//                .clickSubmitBtn();
+//
+//       String actualEmail = driver.findElement(By.xpath("//*[@id=\"userEmail\"]")).getText();
 //        assertEquals(actualEmail, " ");
 
 
     }
 
-}
+

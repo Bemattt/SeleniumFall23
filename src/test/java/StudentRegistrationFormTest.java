@@ -18,27 +18,32 @@ public class StudentRegistrationFormTest {
         browserManager.openByNavigate("https://demoqa.com/automation-practice-form");
 
         StudentPage studentPage = new StudentPage(driver);
-        studentPage.fillUpTheRegistrationForm();
+
 
         WebElement genderMale = studentPage.maleBtn;
         WebElement genderFemale = studentPage.femaleBtn;
         WebElement genderOther = studentPage.otherBtn;
         List<WebElement> genderElements = Arrays.asList(genderMale, genderFemale, genderOther);
-        studentPage.chooseRandomGender(genderElements);
 
         List<String> selectSubjects = Arrays.asList("Bi", "Ch", "Comp", "Eng", "Eco","His", "Ma", "Ph", "So");
-        studentPage.randomMobileNumber()
-       .randomDateOfBirth().selectSubject(selectSubjects);
 
         WebElement sports = studentPage.sportBtn;
         WebElement reading = studentPage.readingBtn;
         WebElement music = studentPage.musicBtn;
         List<WebElement> randomHobbies = Arrays.asList(sports, reading, music);
-        studentPage.selectRandomHobbies(randomHobbies);
+
         Thread.sleep(3000);
-        studentPage.selectRandomPicture().inputCurrentAddress().selectStateAndCity().submitBtn();
 
-
-
+        studentPage.fillUpTheRegistrationForm()
+                .chooseRandomGender(genderElements)
+                .randomDateOfBirth()
+                .randomMobileNumber()
+                .randomDateOfBirth()
+                .selectSubject(selectSubjects)
+                .selectRandomHobbies(randomHobbies)
+                .selectRandomPicture()
+                .inputCurrentAddress()
+                .selectStateAndCity()
+                .submitBtn();
     }
 }

@@ -3,6 +3,7 @@ import com.fall23.ui.pages.RadioBtnPage;
 import com.fall23.ui.pages.TextBoxPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class RadioBtnTest {
     RadioBtnPage radioBtnPage;
 
     @BeforeClass
-    void setUpDriver(){
+    void setUpDriver() {
         driver = Driver.getDriver();
         radioBtnPage = new RadioBtnPage();
     }
@@ -35,5 +36,12 @@ public class RadioBtnTest {
         assertEquals(actualNoMessage, "No");
 
         Thread.sleep(5000);
+    }
+
+    @Test
+    void clickTheRadioButton() throws InterruptedException {
+        driver.get("https://fall2023bema.talentlms.com/dashboard");
+        WebElement element = driver.findElement(By.xpath("//a[@href=\"https://fall2023bema.talentlms.com/user/index/gridPref:reset\"]"));
+        element.click();
     }
 }
