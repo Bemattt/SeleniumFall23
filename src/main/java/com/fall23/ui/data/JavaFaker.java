@@ -33,9 +33,6 @@ public class JavaFaker {
         user.setLastname(faker.name().lastName());
         user.setEmailAddress(faker.internet().emailAddress());
         user.setUsername(faker.name().username());
-        user.setPassword(faker.internet().password(10, 30));
-//        String password = RandomStringUtils.randomAlphanumeric(10);
-//        user.setPassword(password);
         user.setBio("Lorem Ipsum is simply dummy text of the printing and " +
                 "typesetting industry. Lorem Ipsum has been the industry's standard dummy " +
                 "text ever since the 1500s, when an unknown printer took a galley of type and " +

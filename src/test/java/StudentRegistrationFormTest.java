@@ -41,7 +41,6 @@ public class StudentRegistrationFormTest {
                 .randomDateOfBirth()
                 .selectSubject(selectSubjects)
                 .selectRandomHobbies(randomHobbies)
-                .selectRandomPicture()
                 .inputCurrentAddress()
                 .selectStateAndCity()
                 .submitBtn();

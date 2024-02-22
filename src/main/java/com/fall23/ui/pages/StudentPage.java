@@ -170,24 +170,24 @@ public class StudentPage {
         return this;
     }
 
-    public StudentPage selectRandomPicture() {
-        String directoryPath = "/Users/bematumarbekova/Desktop/screen folder";
-
-        try {
-            List<Path> files = getFilesInDirectory(directoryPath);
-            Path randomImagePath = getRandomFile(files);
-            uploadPicture(randomImagePath.toString());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return this;
-    }
-
-    private List<Path> getFilesInDirectory(String directoryPath) throws Exception {
-        Path directory = Paths.get(directoryPath);
-        return Files.list(directory).toList();
-    }
+//    public StudentPage selectRandomPicture() {
+//        String directoryPath = "/Users/bematumarbekova/Desktop/screen folder";
+//
+//        try {
+//            List<Path> files = getFilesInDirectory(directoryPath);
+//            Path randomImagePath = getRandomFile(files);
+//            uploadPicture(randomImagePath.toString());
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return this;
+//    }
+//
+//    private List<Path> getFilesInDirectory(String directoryPath) throws Exception {
+//        Path directory = Paths.get(directoryPath);
+//        return Files.list(directory).toList();
+//    }
 
     private Path getRandomFile(List<Path> files) {
         Random rand = new Random();

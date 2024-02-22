@@ -3,17 +3,13 @@ package com.fall23.ui.pages;
 import com.fall23.entity.User;
 import com.fall23.ui.data.JavaFaker;
 import com.fall23.ui.drivers.Driver;
-import com.fall23.ui.helper.DropDownHelper;
 import com.fall23.ui.helper.WebElementHelper;
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -49,9 +45,6 @@ public class UsersPage {
     @FindBy(xpath = "(//div[@class='hidden-phone']/child::a)[1]")
     public WebElement homeAddUserBtn;
 
-    @FindBy(xpath = "(//a[@class='btn btn-primary'])[3]")
-    public WebElement addUserBtn;
-
     @FindBy(xpath = "//input[@name='name']")
     public WebElement firstnameInput;
 
@@ -82,11 +75,8 @@ public class UsersPage {
     @FindBy(xpath = "//input[@id=\"status\"]")
     public WebElement activeCheckbox;
 
-    @FindBy(xpath = "(//input[@type='checkbox'])[2]")
-    public WebElement deActivateAtCheckbox;
-
     @FindBy(xpath = "(//input[@type='checkbox'])[3]")
-    public WebElement excluseFromEmailsCheckbox;
+    public WebElement excludeFromEmailsCheckbox;
 
     @FindBy(xpath = "//input[@name=\"submit_personal_details\"]")
     public WebElement addUserSubmitBtn;
@@ -94,16 +84,43 @@ public class UsersPage {
     @FindBy(xpath = "//a[text()='cancel']")
     public WebElement cancelAddUserSubmitBtn;
 
+  @FindBy(xpath = "//div[@class='toast-message']")
+   public WebElement addUserSuccessMessage;
+
+  @FindBy(xpath = "(//span[@class=\"help-inline\"])[3]")
+  public WebElement emailMessage;
+
+  @FindBy(xpath = "(//span[@class=\"help-inline\"])[4]")
+  public WebElement userNameMessage;
+
+  @FindBy(xpath = "(//span[@class=\"help-inline\"])[1]")
+  public WebElement nameIsRequiredMessage;
+
+  @FindBy(xpath = "(//span[@class=\"help-inline\"])[2]")
+  public WebElement lastNameIsRequiredMessage;
+
+  @FindBy(xpath = "(//span[@class=\"help-inline\"])[3]")
+  public WebElement emailAddressValidationMessage;
+
+  @FindBy(xpath = "(//span[@class=\"help-inline\"])[2]")
+  public WebElement passwordValidationMessage;
+
+
+
+
+
     public UsersPage fillUpUserWithFakerData() {
         webElementHelper
                 .sendKeys(firstnameInput, randomUser.getFirstname())
                 .sendKeys(lastnameInput, randomUser.getLastname())
                 .sendKeys(emailInput, randomUser.getEmailAddress())
-                .sendKeys(usernameInput, randomUser.getUsername())
-                .sendKeys(passwordInput, randomUser.getPassword())
+                .sendKeys(usernameInput, randomUser.getUsername());
+        passwordInput.sendKeys("TestTest123!");
+        webElementHelper
                 .sendKeys(bioInput, randomUser.getBio());
         return this;
     }
+
 
     public UsersPage selectUserType() throws InterruptedException {
         Thread.sleep(3000);
@@ -138,10 +155,17 @@ public class UsersPage {
         Thread.sleep(3000);
         return this;
     }
+    public UsersPage clickOnExcludefromEmailsCheckbox(){
+        webElementHelper.scrollToElement(excludeFromEmailsCheckbox);
+        webElementHelper.click(excludeFromEmailsCheckbox);
+        return this;
+    }
 
     public UsersPage clickOnAddUserSubmitBtn() {
         webElementHelper.scrollToElement(activeCheckbox)
                 .click(activeCheckbox);
+        webElementHelper.scrollToElement(addUserSubmitBtn);
+        webElementHelper.click(addUserSubmitBtn);
         return this;
     }
 }
