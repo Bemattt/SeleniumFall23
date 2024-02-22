@@ -8,7 +8,7 @@ import java.time.Duration;
 public class ChromeWebDriver {
 
     public static WebDriver loadChromeDriver(){
-        System.setProperty("webdriver.safari.driver","src/main/resources/Drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver","src/main/resources/Drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();

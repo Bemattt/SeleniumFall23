@@ -1,22 +1,68 @@
 package com.fall23.ui.helper;
 
 import com.fall23.ui.drivers.Driver;
-import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class WindowHelper {
+public class BrowserManager {
 
     private WebDriver driver;
+    private WebDriverWait wait;
+
+    public BrowserManager(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void openByNavigate(final String URL){
+        driver.navigate().to(URL);
+    }
+
+    public void openByGet(final String URL){
+        driver.get(URL);
+    }
+
+    public void goBack(){
+        driver.navigate().back();
+    }
+
+    public void goForward(){
+        driver.navigate().forward();
+    }
+
+    public void refreshThePage(){
+        driver.navigate().refresh();
+    }
+
+
+    public BrowserManager swithToFrame(WebElement element){
+        try {
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    public BrowserManager switchToParentFrame(){
+        driver.switchTo().parentFrame();
+        return this;
+    }
+
+    public BrowserManager switchByIndex(int index){
+        driver.switchTo().frame(index);
+        return this;
+    }
 
     public static Set<String> getWindowHandles() {
         return Driver.getDriver().getWindowHandles();
     }
-
     public void switchToWindow(int index) {
         Set<String> handles = getWindowHandles();
         List<String> windowsId = new LinkedList<>(handles);
@@ -27,19 +73,6 @@ public class WindowHelper {
 
         Driver.getDriver().switchTo().window(windowsId.get(index));
     }
-
-//    public static void main(String[] args) throws InterruptedException {
-//        Driver.getDriver().get("https://demoqa.com/browser-windows");
-//        WebElement newTab = Driver.getDriver().findElement(By.id("tabButton"));
-//        for (int i = 0; i < 3; i++) {
-//            newTab.click();
-//            Thread.sleep(4000);
-//        }
-//        switchToWindow(1);
-//        Thread.sleep(6000);
-//        Driver.getDriver().quit();
-//    }
-
     public void switchToParent() {
         LinkedList<String> windowsId = new LinkedList<>(getWindowHandles());
         Driver.getDriver().switchTo().window(windowsId.get(0));
